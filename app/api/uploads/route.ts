@@ -37,6 +37,6 @@ export async function POST(req: NextRequest) {
         const result: any = await uploadStream();
         return NextResponse.json({ url: result.secure_url });
     } catch (err) {
-        return NextResponse.json({ error: 'Upload failed' }, { status: 500 });
+        return NextResponse.json({ error: 'Upload failed' + err }, { status: 500 });
     }
 }

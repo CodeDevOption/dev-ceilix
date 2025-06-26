@@ -9,7 +9,7 @@ import { Separator } from "@radix-ui/react-separator";
 import { Camera } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { db } from '../../firebase';
 import Spinner from "@/components/spinner";
 import { toast } from "sonner";
@@ -17,7 +17,6 @@ export default function Page() {
     const [imgFile, setImgFile] = useState(null);
     const [imgPreview, setImgPreview] = useState<string | null>(null);
     const [uploading, setUploading] = useState<boolean>(false);
-    const [url, setUrl] = useState<string>("");
     const [formData, setFormData] = useState<{ name: string, title: string, quantity: number | undefined, unitPrice: number | undefined, sellingPrice: number | undefined, productCode: string, category: string }>({
         name: "",
         title: "",
@@ -57,7 +56,7 @@ export default function Page() {
             const productDocRef = doc(db, "Products",
                 formData?.productCode
             )
-            const docRef = await setDoc(productDocRef, {
+            await setDoc(productDocRef, {
                 ...formData,
                 productImg: data.url
             })
