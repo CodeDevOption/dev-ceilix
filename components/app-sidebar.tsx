@@ -20,8 +20,7 @@ import {
     SidebarMenuItem,
     SidebarRail,
 } from "@/components/ui/sidebar"
-import { Collapsible, CollapsibleTrigger } from "@radix-ui/react-collapsible"
-import { CollapsibleContent } from "./ui/collapsible"
+import { Collapsible, } from "@radix-ui/react-collapsible"
 import Link from "next/link"
 
 // This is sample data.

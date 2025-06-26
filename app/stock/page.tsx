@@ -14,7 +14,7 @@ import { db } from '../../firebase';
 import Spinner from "@/components/spinner";
 import { toast } from "sonner";
 export default function Page() {
-    const [imgFile, setImgFile] = useState(null);
+    const [imgFile, setImgFile] = useState<File | null>(null);
     const [imgPreview, setImgPreview] = useState<string | null>(null);
     const [uploading, setUploading] = useState<boolean>(false);
     const [formData, setFormData] = useState<{ name: string, title: string, quantity: number | undefined, unitPrice: number | undefined, sellingPrice: number | undefined, productCode: string, category: string }>({
@@ -30,7 +30,7 @@ export default function Page() {
 
     })
 
-    const handleFileChange = (e: any) => {
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const selected = e.target.files?.[0];
         if (selected) {
             setImgFile(selected);
